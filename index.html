@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script>
+
+            function computerChoice(){
+                
+                let option = Math.floor(Math.random() * 3) + 1;;
+                let choice = '';
+                switch (option){
+                    case 1:
+                        choice = 'rock';
+                        break;
+                    case 2:
+                        choice = 'paper';
+                        break;
+                    case 3:
+                        choice = 'scissors';
+                        break;
+                }
+
+                return choice;
+            }
+        
+
+            function playRound(playerSelection, computerSelection){
+                if(playerSelection == computerSelection){
+                    return "It is a draw!";
+                }else if(playerSelection == 'paper' && computerSelection == 'rock'){
+                    return "You Win! Paper beats Rock";
+                }else if(playerSelection == 'paper' && computerSelection == 'scissors'){
+                    return "You Lose! Scissor beats paper";
+                }else if(playerSelection == 'rock' && computerSelection == 'scissors'){
+                    return "You Win! Rock beats scissors";
+                }else if(playerSelection == 'rock' && computerSelection == 'paper'){
+                    return "You Lose! Paper beats rock";
+                }else if(playerSelection == 'scissors' && computerSelection == 'rock'){
+                    return "You Win! Scissors beats Rock";
+                }else if(playerSelection == 'scissors' && computerSelection == 'paper'){
+                    return "You Lose! Paper beats Scissors";
+                }
+            }
+                let playerSelection = 'scissors';
+                
+
+            console.log();
+
+            function game(){
+                let playerScore = 0;
+                let computerScore = 0;
+
+                for(let i=0 ; i<5; i++){
+                    let playerSelection = prompt("Choose an option: rock, paper or scissors. If you don't give an input, Computer Wins!");
+                    let computerSelection = computerChoice().toLowerCase();
+
+                    playerSelection = playerSelection.toLowerCase();
+
+                   
+
+                    let result = playRound(playerSelection,computerSelection);
+
+                    if(result === "You Win! Paper beats Rock" || result === "You Win! Rock beats scissors" || result === "You Win! Scissors beats Rock" ){
+                        playerScore++;
+                    }else if(result === "It is a draw!"){
+
+                    }else{
+                        computerScore++;
+                    }
+
+                    alert(`The result is: ${result}, Score: Computer:${computerScore} Player:${playerScore}`);
+
+
+                }
+
+                if(computerScore === playerScore){
+                    alert(`Best of 5 games result: Draw!`);
+                }else if(computerScore > playerScore){
+                    alert(`Best of 5 games result: Computer Wins!`);
+                }else{
+                    alert(`Best of 5 games result: You Win!`);
+                }
+
+            }
+        </script>
+
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
